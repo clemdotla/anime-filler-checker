@@ -97,6 +97,20 @@ async function fetchFillerData(animeName) {
 }
 
 /**
+ * Decode common HTML entities back to real characters.
+ */
+function decodeHtmlEntities(str) {
+  return str
+    .replace(/&#(\d+);/g, (_, n) => String.fromCharCode(Number(n)))
+    .replace(/&#x([0-9a-fA-F]+);/g, (_, h) => String.fromCharCode(parseInt(h, 16)))
+    .replace(/&amp;/g, "&")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&quot;/g, '"')
+    .replace(/&apos;/g, "'");
+}
+
+/**
  * Parse AnimeFillerList show page using regex.
  */
 function parseWithRegex(html, url) {
@@ -104,7 +118,7 @@ function parseWithRegex(html, url) {
 
   const titleMatch = html.match(/<h1[^>]*>\s*([\s\S]*?)\s*<\/h1>/i);
   const showTitle = titleMatch
-    ? titleMatch[1].replace(/<[^>]+>/g, "").trim()
+    ? decodeHtmlEntities(titleMatch[1].replace(/<[^>]+>/g, "").trim())
     : "Unknown";
 
   const rowRegex =
@@ -119,7 +133,7 @@ function parseWithRegex(html, url) {
     const cells = [];
     let tdMatch;
     while ((tdMatch = tdRegex.exec(rowContent)) !== null) {
-      cells.push(tdMatch[1].replace(/<[^>]+>/g, "").trim());
+      cells.push(decodeHtmlEntities(tdMatch[1].replace(/<[^>]+>/g, "").trim()));
     }
 
     if (cells.length < 2) continue;

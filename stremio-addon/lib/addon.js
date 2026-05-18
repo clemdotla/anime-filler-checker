@@ -313,7 +313,7 @@ builder.defineSubtitlesHandler(async ({ type, id, config }) => {
 
     let nextCanon = null;
     if (episode.type === "filler" || episode.type === "mixed") {
-      for (let n = epNum + 1; n <= epNum + 50; n++) {
+      for (let n = epNum + 1; n <= fillerData.totalEpisodes; n++) {
         const candidate = fillerData.episodes[n];
         if (!candidate) break;
         if (candidate.type !== "filler") {
@@ -391,7 +391,7 @@ builder.defineStreamHandler(async ({ type, id, config }) => {
     let description = config?.shortDescription ? `${emoji} ${shortLabel}` : label;
 
     if (episode.type === "filler" || episode.type === "mixed") {
-      for (let n = epNum + 1; n <= epNum + 50; n++) {
+      for (let n = epNum + 1; n <= fillerData.totalEpisodes; n++) {
         const candidate = fillerData.episodes[n];
         if (!candidate) break;
         if (candidate.type !== "filler") {
