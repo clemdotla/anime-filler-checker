@@ -437,9 +437,9 @@ const STREAM_LABELS = {
 builder.defineStreamHandler(async ({ type, id, config }) => {
   if (MAINTENANCE_MODE) return {
     streams: [{
-      name: "🚧 MAINTENANCE",
-      description: "Anime Filler Checker is temporarily under maintenance.\nPlease check back soon — animefillerchecker.com",
-      externalUrl: "https://animefillerchecker.com",
+      name: "🚧 ADDON DISABLED",
+      description: "AnimeFillerChecker addon is currently disabled indefinitely.\nThere were too many requests coming in and my Vercel deployment can't provide it anymore. Until I find a sustainable hosting solution, the Stremio addon will stay offline.\nThe browser extension at animefillerchecker.com still works for filler info, visit the site for updates.\nIn the meantime you can still host the stremio addon on your local device on your own if you want.\n\nhttps://github.com/nehirakbass/anime-filler-checker",
+      externalUrl: "https://github.com/nehirakbass/anime-filler-checker",
     }],
   };
   if (type !== "series") return { streams: [] };

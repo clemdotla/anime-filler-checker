@@ -13,9 +13,9 @@ const builder = require("./lib/addon");
 
 const MAINTENANCE_STREAM = JSON.stringify({
   streams: [{
-    name: "🚧 MAINTENANCE",
-    description: "Anime Filler Checker is temporarily under maintenance.\nPlease check back soon \u2014 animefillerchecker.com",
-    externalUrl: "https://animefillerchecker.com",
+    name: "🚧 ADDON DISABLED",
+    description: "AnimeFillerChecker addon is currently disabled indefinitely.\nThere were too many requests coming in and my Vercel deployment can't provide it anymore. Until I find a sustainable hosting solution, the Stremio addon will stay offline.\nThe browser extension at animefillerchecker.com still works for filler info, visit the site for updates.\nIn the meantime you can still host the stremio addon on your local device on your own if you want.\n\nhttps://github.com/nehirakbass/anime-filler-checker",
+    externalUrl: "https://github.com/nehirakbass/anime-filler-checker",
   }],
 });
 const MAINTENANCE_SUBTITLES = JSON.stringify({ subtitles: [] });
